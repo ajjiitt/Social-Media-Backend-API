@@ -27,7 +27,7 @@ router.post("/register", async (req, res) => {
     await newUser.save();
     const token = jwtGenerator(newUser._id);
 
-    return res.status(300).json({ message:"User Created",token });
+    return res.status(300).json({ message: "User Created", token });
   } catch (err) {
     return res.status(500).send("server error");
   }
@@ -55,7 +55,7 @@ router.post("/authenticate", async (req, res) => {
 
     const token = jwtGenerator(user._id);
 
-    return res.status(201).json({ token });
+    return res.status(201).json({ token, message: "Token Generated." });
   } catch (err) {
     return res.status(500).send(err.message);
   }
